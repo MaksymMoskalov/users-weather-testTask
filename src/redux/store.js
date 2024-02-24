@@ -11,17 +11,17 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import { autoReducer } from './autosReduser';
+import { userWeatherReducer } from './usersWeatherReduser';
 
 const favCarConfig = {
-  key: 'cars',
+  key: 'usersWeather',
   version: 1,
   storage,
-  whitelist: ['favouriteCars'],
+  whitelist: ['favouriteUsers'],
 };
 
 const rootReducer = combineReducers({
-  cars: persistReducer(favCarConfig, autoReducer),
+  usersWeather: persistReducer(favCarConfig, userWeatherReducer),
 });
 
 export const store = configureStore({

@@ -17,7 +17,10 @@ import {
   RentBtn,
 } from './Modal.styled';
 import { RxCross2 } from 'react-icons/rx';
-import { selectCarData, selectIsLoading } from '../../redux/cars.selectors';
+import {
+  selectCarData,
+  selectIsLoading,
+} from '../../redux/usersWeather.selectors';
 import { Blocks } from 'react-loader-spinner';
 
 export function CarModal({ closeModal }) {

@@ -1,8 +1,8 @@
 {
-  "name": "TestTask",
+  "name": "users-weather-testTask",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://MaksymMoskalov.github.io/TestTask/",
+  "homepage": "https://MaksymMoskalov.github.io/users-weather-testTask/",
   "dependencies": {
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",

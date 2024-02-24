@@ -5,6 +5,7 @@ import { favouriteMatcher } from 'service/matcher';
 const INITIAL_STATE = {
   users: [],
   favouriteUsers: null,
+  modalData: null,
   page: 1,
   isLoading: false,
   error: null,
@@ -37,6 +38,11 @@ const userWeatherSlice = createSlice({
       if (state.favouriteUsers) {
         state.users = favouriteMatcher(state.users, state.favouriteUsers);
       }
+    },
+    handlModalData(state, action) {
+      state.modalData = state.users.find(
+        user => user.login.uuid === action.payload
+      );
     },
   },
   extraReducers: builder =>
@@ -75,6 +81,6 @@ const userWeatherSlice = createSlice({
       ),
 });
 
-export const { handlFavouriteAdd, handlFavouriteDell } =
+export const { handlFavouriteAdd, handlFavouriteDell, handlModalData } =
   userWeatherSlice.actions;
 export const userWeatherReducer = userWeatherSlice.reducer;

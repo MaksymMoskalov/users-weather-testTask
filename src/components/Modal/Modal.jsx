@@ -18,13 +18,15 @@ import {
 } from './Modal.styled';
 import { RxCross2 } from 'react-icons/rx';
 import {
-  selectCarData,
+  selectModalData,
   selectIsLoading,
 } from '../../redux/usersWeather.selectors';
 import { Blocks } from 'react-loader-spinner';
+import { weatherIconSelector } from 'service/weatherIcon';
+import { HourlyWeatherList } from 'components/HourlyWeatherList/HourlyWeatherList';
 
 export function CarModal({ closeModal }) {
-  const carData = useSelector(selectCarData);
+  const userData = useSelector(selectModalData);
   const isLoading = useSelector(selectIsLoading);
 
   useEffect(() => {
@@ -55,8 +57,24 @@ export function CarModal({ closeModal }) {
         <ExitBtn onClick={closeModal}>
           <RxCross2 className="cross" />
         </ExitBtn>
-
-        {carData !== null && (
+        {userData !== null && (
+          <>
+            <div>{weatherIconSelector(userData.current.weather_code)}</div>
+            <p>
+              {userData.location.city},{userData.location.country}
+            </p>
+            <p>{userData.current.temperature_2m}</p>
+            <HourlyWeatherList
+              temperatures={userData.hourly.temperature_2m}
+              time={userData.hourly.time}
+            />
+            <div>
+              <p>{userData.current.relative_humidity_2m}</p>
+              <p>{userData.current.wind_speed_10m}</p>
+            </div>
+          </>
+        )}
+        {/* {carData !== null && (
           <>
             <ModalImgWrapper>
               <ModalImg src={carData.img} alt="" />
@@ -111,7 +129,7 @@ export function CarModal({ closeModal }) {
             </Condition>
             <RentBtn href="tel:+380730000000">Rental car</RentBtn>
           </>
-        )}
+        )} */}
         {isLoading && (
           <div className="modal-loader">
             <Blocks

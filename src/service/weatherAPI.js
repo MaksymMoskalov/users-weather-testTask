@@ -9,8 +9,9 @@ export const requestWeather = async (latitude, longitude) => {
     params: {
       latitude: latitude,
       longitude: longitude,
-      current_weather: true,
-      hourly: 'temperature_2m',
+      current:
+        'temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m',
+      hourly: 'temperature_2m,relative_humidity_2m',
       forecast_days: 1,
     },
   };

@@ -11,7 +11,7 @@ import {
   selectPage,
   selectFavouriteUsers,
 } from '../../redux/usersWeather.selectors';
-// import { CarModal } from 'components/Modal/Modal';
+import { CarModal } from 'components/Modal/Modal';
 // import { handlModalClose } from '../../redux/autosReduser';
 import { Loader } from 'components/Loader/Loader';
 import { CatalogSection, LoadMore } from './Catalog.styled';
@@ -33,7 +33,6 @@ const Catalog = () => {
 
   const toglModal = () => {
     setOpenModal(!openModal);
-    // disputch(handlModalClose(null));
   };
 
   // const filteredCars = () => {
@@ -52,7 +51,7 @@ const Catalog = () => {
         </LoadMore>
         {isLoading && <Loader />}
       </CatalogSection>
-      {/* {openModal && <CarModal closeModal={toglModal} />} */}
+      {openModal && <CarModal closeModal={toglModal} />}
     </>
   );
 };

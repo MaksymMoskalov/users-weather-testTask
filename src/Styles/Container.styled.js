@@ -5,4 +5,8 @@ export const StyledContainer = styled.div`
   margin-left: auto;
   margin-right: auto;
   font-family: Manrope;
+
+  .ffccff {
+    width: 90px;
+  }
 `;

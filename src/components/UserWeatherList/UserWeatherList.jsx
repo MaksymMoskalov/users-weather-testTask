@@ -1,15 +1,15 @@
 import { UserWeatherItem } from 'components/UserWeatherItem/UserWeatherItem';
 import { StyledCarList } from './UserWeatherList.styled';
-// import { useDispatch } from 'react-redux';
-// import { exactCarThunk } from '../../redux/usersWeatherOperations';
+import { useDispatch } from 'react-redux';
+import { handlModalData } from '../../redux/usersWeatherReduser';
 
 export const UserWeatherList = ({ openModal, users }) => {
-  // const disputch = useDispatch();
+  const disputch = useDispatch();
 
-  // const vievModal = id => {
-  //   disputch(exactCarThunk(id));
-  //   openModal();
-  // };
+  const vievModal = id => {
+    disputch(handlModalData(id));
+    openModal();
+  };
 
   return (
     <StyledCarList>
@@ -19,7 +19,7 @@ export const UserWeatherList = ({ openModal, users }) => {
             <UserWeatherItem
               userItemData={user}
               key={user.login.uuid}
-              // openModal={() => vievModal(user.id)}
+              openModal={() => vievModal(user.login.uuid)}
             />
           );
         })}

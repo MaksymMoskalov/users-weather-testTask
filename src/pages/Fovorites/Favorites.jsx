@@ -1,40 +1,39 @@
-// import { CarList } from 'components/UserWeatherList/UserWeatherList';
-// import {
-//   selectFavouriteCars,
-//   selectIsLoading,
-// } from '../../redux/cars.selectors';
-// import { useDispatch, useSelector } from 'react-redux';
-// import {
-//   handlModalClose,
-//   handlResetCatalog,
-// } from '../../redux/usersWeatherReduser';
-// import { useEffect, useState } from 'react';
-// import { CarModal } from 'components/Modal/Modal';
-// import { Loader } from 'components/Loader/Loader';
+import { UserWeatherList } from 'components/UserWeatherList/UserWeatherList';
+import {
+  selectFavouriteUsers,
+  selectIsLoading,
+} from '../../redux/usersWeather.selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  handlModalClose,
+  handlResetCatalog,
+} from '../../redux/usersWeatherReduser';
+import { useEffect, useState } from 'react';
+import { CarModal } from 'components/Modal/Modal';
+import { Loader } from 'components/Loader/Loader';
 
 const Favorites = () => {
-  // const disputch = useDispatch();
-  // const favouriteCars = useSelector(selectFavouriteCars);
-  // const isLoading = useSelector(selectIsLoading);
-  // const [openModal, setOpenModal] = useState(false);
+  const disputch = useDispatch();
+  const favouriteUsers = useSelector(selectFavouriteUsers);
+  const isLoading = useSelector(selectIsLoading);
+  const [openModal, setOpenModal] = useState(false);
 
   // useEffect(() => {
   //   disputch(handlResetCatalog());
   // }, [disputch]);
 
-  // const toglModal = () => {
-  //   setOpenModal(!openModal);
-  //   disputch(handlModalClose(null));
-  // };
+  const toglModal = () => {
+    setOpenModal(!openModal);
+    // disputch(handlModalClose(null));
+  };
 
   return (
     <>
-      <h1>Favourite</h1>
-      {/* <section>
-        <CarList openModal={toglModal} cars={favouriteCars} />
+      <section>
+        <UserWeatherList openModal={toglModal} users={favouriteUsers} />
       </section>
       {openModal && <CarModal closeModal={toglModal} />}
-      {isLoading && <Loader />} */}
+      {isLoading && <Loader />}
     </>
   );
 };

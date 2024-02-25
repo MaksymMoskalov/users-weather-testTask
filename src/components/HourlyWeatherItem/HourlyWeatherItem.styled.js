@@ -7,8 +7,13 @@ export const HwItem = styled.li`
   background-color: #f5f5f5;
   border-radius: 8px;
   padding: 5px;
+  height: 50px;
+
+  .time {
+    width: 55px;
+  }
 `;
 
 export const Temperature = styled.p`
-  width: 60px;
+  width: 55px;
 `;

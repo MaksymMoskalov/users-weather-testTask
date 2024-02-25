@@ -5,7 +5,7 @@ export const HourlyWeatherItem = ({ temperature, time }) => {
 
   return (
     <HwItem>
-      <p>
+      <p className="time">
         {originalDate.toLocaleTimeString('uk-UA', {
           hour: '2-digit',
           minute: '2-digit',

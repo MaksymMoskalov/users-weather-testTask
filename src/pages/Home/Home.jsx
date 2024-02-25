@@ -9,14 +9,12 @@ import {
   selectUsers,
   selectIsLoading,
   selectPage,
-  selectFavouriteUsers,
 } from '../../redux/usersWeather.selectors';
-import { CarModal } from 'components/Modal/Modal';
-// import { handlModalClose } from '../../redux/autosReduser';
+import { Modal } from 'components/Modal/Modal';
 import { Loader } from 'components/Loader/Loader';
-import { CatalogSection, LoadMore } from './Catalog.styled';
+import { CatalogSection, LoadMore } from './Home.styled';
 
-const Catalog = () => {
+const Home = () => {
   const disputch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const page = useSelector(selectPage);
@@ -35,13 +33,6 @@ const Catalog = () => {
     setOpenModal(!openModal);
   };
 
-  // const filteredCars = () => {
-  //   const filteredCars = cars.filter(car => {
-  //     return car.make.includes(brandFilter.value);
-  //   });
-  //   return filteredCars;
-  // };
-  // const carsByBrand = filteredCars();
   return (
     <>
       <CatalogSection>
@@ -51,9 +42,9 @@ const Catalog = () => {
         </LoadMore>
         {isLoading && <Loader />}
       </CatalogSection>
-      {openModal && <CarModal closeModal={toglModal} />}
+      {openModal && <Modal closeModal={toglModal} />}
     </>
   );
 };
 
-export default Catalog;
+export default Home;

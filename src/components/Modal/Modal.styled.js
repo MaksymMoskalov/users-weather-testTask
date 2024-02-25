@@ -9,20 +9,20 @@ export const Overlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 1200;
 `;
 
-export const CarModalContent = styled.div`
+export const ModalContent = styled.div`
   position: relative;
 
   display: block;
-  width: 460px;
-  min-height: 600px;
-  max-height: 700px;
+  width: 350px;
+  max-height: 400px;
   padding: 40px;
   border-radius: 24px;
   background-color: white;
+  outline: 2px solid #3470ff;
 
   .modal-loader {
     display: block;
@@ -31,6 +31,11 @@ export const CarModalContent = styled.div`
     margin-right: auto;
     margin-top: 100px;
   }
+
+  @media (max-width: 768px) {
+    padding: 15px;
+    width: 270px;
+  }
 `;
 
 export const ExitBtn = styled.button`
@@ -38,7 +43,7 @@ export const ExitBtn = styled.button`
   width: 24px;
   height: 24px;
   top: 16px;
-  left: 501px;
+  left: 390px;
 
   padding: 0;
   margin: 0;
@@ -51,109 +56,43 @@ export const ExitBtn = styled.button`
     width: 24px;
     height: 24px;
   }
+
+  @media (max-width: 768px) {
+    top: 12px;
+    left: 265px;
+  }
 `;
 
-export const ModalImgWrapper = styled.div`
-  width: 460px;
-  max-height: 248px;
-  margin-bottom: 14px;
+export const CoditionsWrapper = styled.div`
+  display: flex;
+  justify-content: space-around;
+  height: 30px;
 
-  border-radius: 14px;
-  overflow: hidden;
+  .cond-icon {
+    width: 22px;
+    height: 22px;
+  }
 `;
 
-export const ModalImg = styled.img`
-  display: block;
-  width: 100%;
-  object-position: center;
+export const Codition = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
 
-  border-radius: 14px;
-  overflow: hidden;
+  .cond-icon {
+    width: 30px;
+    height: 30px;
+  }
 `;
 
-export const ModalTitle = styled.div`
+export const CoditionData = styled.div``;
+
+export const CoditionValue = styled.p`
   font-size: 18px;
   font-weight: 500;
-  line-height: 24px;
-  margin-bottom: 8px;
 `;
 
-export const Acsent = styled.span`
-  color: #3470ff;
-`;
-
-export const ModalShortDescription = styled.p`
-  width: 277px;
-  margin-bottom: 14px;
-
-  color: rgba(18, 20, 23, 0.5);
+export const CoditionTitle = styled.p`
   font-size: 12px;
   font-weight: 400;
-  line-height: 18px;
-`;
-
-export const ModalDescription = styled.h2`
-  margin-bottom: 24px;
-
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-`;
-
-export const AccessoriesAndFunc = styled.h3`
-  margin-bottom: 8px;
-
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
-`;
-
-export const ModalAccessories = styled.p`
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 18px;
-  color: rgba(18, 20, 23, 0.5);
-`;
-
-export const AccessoriesAndFuncWrapper = styled.div`
-  margin-bottom: 24px;
-`;
-
-export const Condition = styled.p`
-  display: inline-block;
-  padding: 7px 14px;
-
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 18px;
-
-  border-radius: 35px;
-  background-color: #f9f9f9;
-
-  .condition-acs {
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 18px;
-  }
-`;
-
-export const RentBtn = styled.a`
-  display: block;
-  width: 68px;
-  height: 20px;
-  background-color: #3470ff;
-  padding: 12px 50px;
-  border-radius: 12px;
-  border-color: transparent;
-  color: #fff;
-  margin-top: 15px;
-  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 20px;
-
-  &:hover {
-    background-color: #0b44cd;
-  }
 `;

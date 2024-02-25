@@ -3,7 +3,7 @@ import { StyledCarList } from './UserWeatherList.styled';
 import { useDispatch } from 'react-redux';
 import { handlModalData } from '../../redux/usersWeatherReduser';
 
-export const UserWeatherList = ({ openModal, users }) => {
+export const UserWeatherList = ({ openModal, users, favouritePage }) => {
   const disputch = useDispatch();
 
   const vievModal = id => {
@@ -20,6 +20,7 @@ export const UserWeatherList = ({ openModal, users }) => {
               userItemData={user}
               key={user.login.uuid}
               openModal={() => vievModal(user.login.uuid)}
+              favouritePage={favouritePage}
             />
           );
         })}

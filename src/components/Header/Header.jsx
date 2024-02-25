@@ -8,11 +8,8 @@ export const Header = () => {
         <NavLink to={'/'} className="header-link">
           Home
         </NavLink>
-        <NavLink to={'/catalog'} className="header-link">
-          Catalog
-        </NavLink>
-        <NavLink to={'/favorites'} className="header-link">
-          Favorites
+        <NavLink to={'/saved'} className="header-link">
+          Saved
         </NavLink>
       </StyledNavigation>
     </StyledHeader>

@@ -4,8 +4,8 @@ import { Suspense, lazy } from 'react';
 import { Header } from './Header/Header';
 import { Loader } from './Loader/Loader';
 
-const Catalog = lazy(() => import('pages/Catalog/Catalog'));
-const Favorites = lazy(() => import('pages/Fovorites/Favorites'));
+const Home = lazy(() => import('pages/Home/Home'));
+const Saved = lazy(() => import('pages/Saved/Saved'));
 
 export const App = () => {
   return (
@@ -13,8 +13,8 @@ export const App = () => {
       <Header />
       <Suspense fallback={<Loader />}>
         <Routes>
-          <Route path="/catalog" element={<Catalog />} />
-          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/saved" element={<Saved />} />
         </Routes>
       </Suspense>
     </StyledContainer>

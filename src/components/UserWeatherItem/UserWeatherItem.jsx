@@ -1,14 +1,22 @@
-// import {
-//   StyledCarItem,
-//   StyledImgWrapper,
-//   StyledCarImg,
-//   StyledTitleWrapper,
-//   StyledShortInfo,
-//   StyledMoreButton,
-//   FavoutiteBtn,
-// } from './UserWeatherItem.styled';
-import { ReactComponent as HeartChec } from '../../svg/heart.svg';
-import { ReactComponent as Heart } from '../../svg/heartUncheckd.svg';
+import {
+  Button,
+  ButtonWrapper,
+  CurrentTemperature,
+  Email,
+  Gender,
+  SavedButton,
+  TempRate,
+  TemperatureWrapper,
+  UsemName,
+  UserImg,
+  UserImgWrapper,
+  UserInfo,
+  UserLocation,
+  UwItem,
+  UwItemHead,
+  WeatherInfo,
+  WeatherSvgWrapper,
+} from './UserWeatherItem.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   handlFavouriteAdd,
@@ -16,14 +24,17 @@ import {
 } from '../../redux/usersWeatherReduser';
 import { selectFavouriteUsers } from '../../redux/usersWeather.selectors';
 import { weatherIconSelector } from 'service/weatherIcon';
+import { FaTemperatureArrowUp, FaTemperatureArrowDown } from 'react-icons/fa6';
 
-export const UserWeatherItem = ({ userItemData, openModal }) => {
+export const UserWeatherItem = ({
+  userItemData,
+  openModal,
+  favouritePage = false,
+}) => {
   const dispatch = useDispatch();
-
+  const favorite = useSelector(selectFavouriteUsers);
   const { gender, name, email, picture, location, current, hourly } =
     userItemData;
-
-  const favorite = useSelector(selectFavouriteUsers);
 
   const addToFavourite = user => {
     if (favorite) {
@@ -36,33 +47,63 @@ export const UserWeatherItem = ({ userItemData, openModal }) => {
   };
 
   return (
-    <li>
-      <button type="button" onClick={() => addToFavourite(userItemData)}>
-        favourite
-      </button>
-      <div>
-        <img src={picture.medium} alt={(name.first, ' ', name.last)} />
-        <p>
-          {name.first} {name.last}
-        </p>
-        <p>{email}</p>
-        <p>{gender}</p>
-      </div>
-      <p>
-        {location.city},{location.country}
-      </p>
-      <div>
-        <div className="fffffffffffff">
-          {weatherIconSelector(current.weather_code)}
-        </div>
+    <UwItem>
+      <UwItemHead>
+        <UserImgWrapper>
+          <UserImg src={picture.thumbnail} alt={(name.first, ' ', name.last)} />
+        </UserImgWrapper>
 
-        <p>{current.temperature_2m}</p>
-        <p>{Math.min(...hourly.temperature_2m)}</p>
-        <p>{Math.max(...hourly.temperature_2m)}</p>
-      </div>
-      <button type="button" onClick={openModal}>
-        Weather
-      </button>
-    </li>
+        <UserInfo>
+          <UsemName>
+            {name.first} {name.last}
+          </UsemName>
+          <Email>{email}</Email>
+          <Gender>{gender}</Gender>
+        </UserInfo>
+      </UwItemHead>
+
+      <WeatherInfo>
+        <UserLocation>
+          {location.city},{location.country}
+        </UserLocation>
+
+        <WeatherSvgWrapper>
+          {weatherIconSelector(current.weather_code)}
+        </WeatherSvgWrapper>
+
+        <CurrentTemperature>
+          {current.temperature_2m} {'\u2103'}
+        </CurrentTemperature>
+
+        <TemperatureWrapper>
+          <TempRate>
+            <FaTemperatureArrowDown className="temp-icon" />{' '}
+            {Math.min(...hourly.temperature_2m)} {'\u2103'}
+          </TempRate>
+          <TempRate>
+            <FaTemperatureArrowUp className="temp-icon" />{' '}
+            {Math.max(...hourly.temperature_2m)} {'\u2103'}
+          </TempRate>
+        </TemperatureWrapper>
+      </WeatherInfo>
+
+      <ButtonWrapper>
+        {!favouritePage ? (
+          <>
+            {' '}
+            <Button type="button" onClick={openModal}>
+              Weather
+            </Button>
+            <Button type="button" onClick={() => addToFavourite(userItemData)}>
+              Save
+            </Button>
+          </>
+        ) : (
+          <SavedButton type="button" onClick={openModal}>
+            Weather
+          </SavedButton>
+        )}
+      </ButtonWrapper>
+    </UwItem>
   );
 };

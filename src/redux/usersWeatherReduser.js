@@ -1,6 +1,6 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { usersThunk, loadMoreUsersThunk } from './usersWeatherOperations';
-import { favouriteMatcher } from 'service/matcher';
+import Notiflix from 'notiflix';
 
 const INITIAL_STATE = {
   users: [],
@@ -22,9 +22,7 @@ const userWeatherSlice = createSlice({
             { ...action.payload, favourite: true },
           ])
         : (state.favouriteUsers = [{ ...action.payload, favourite: true }]);
-      if (state.favouriteUsers) {
-        state.users = favouriteMatcher(state.users, state.favouriteUsers);
-      }
+      Notiflix.Notify.success('User Saved');
     },
     handlFavouriteDell(state, action) {
       state.favouriteUsers = state.favouriteUsers.filter(
@@ -35,9 +33,7 @@ const userWeatherSlice = createSlice({
           user.favourite = false;
         return user;
       });
-      if (state.favouriteUsers) {
-        state.users = favouriteMatcher(state.users, state.favouriteUsers);
-      }
+      Notiflix.Notify.failure('User Removed');
     },
     handlModalData(state, action) {
       state.modalData = state.users.find(
@@ -50,18 +46,12 @@ const userWeatherSlice = createSlice({
       .addCase(usersThunk.fulfilled, (state, action) => {
         state.isLoading = false;
         state.users = action.payload;
-        if (state.favouriteUsers) {
-          state.users = favouriteMatcher(state.users, state.favouriteUsers);
-        }
         state.page = state.page + 1;
         state.error = null;
       })
       .addCase(loadMoreUsersThunk.fulfilled, (state, action) => {
         state.isLoading = false;
         state.users = [...state.users, ...action.payload];
-        if (state.favouriteUsers) {
-          state.users = favouriteMatcher(state.users, state.favouriteUsers);
-        }
         state.page = state.page + 1;
         state.error = null;
       })

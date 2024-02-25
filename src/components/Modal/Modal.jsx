@@ -1,33 +1,33 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import {
-  CarModalContent,
+  ModalContent,
   Overlay,
   ExitBtn,
-  ModalImgWrapper,
-  ModalImg,
-  ModalTitle,
-  Acsent,
-  ModalShortDescription,
-  ModalDescription,
-  AccessoriesAndFunc,
-  ModalAccessories,
-  AccessoriesAndFuncWrapper,
-  Condition,
-  RentBtn,
+  CoditionsWrapper,
+  Codition,
+  CoditionData,
+  CoditionValue,
+  CoditionTitle,
 } from './Modal.styled';
 import { RxCross2 } from 'react-icons/rx';
-import {
-  selectModalData,
-  selectIsLoading,
-} from '../../redux/usersWeather.selectors';
-import { Blocks } from 'react-loader-spinner';
+import { selectModalData } from '../../redux/usersWeather.selectors';
 import { weatherIconSelector } from 'service/weatherIcon';
 import { HourlyWeatherList } from 'components/HourlyWeatherList/HourlyWeatherList';
+import {
+  CurrentTemperature,
+  TempRate,
+  TemperatureWrapper,
+  UserLocation,
+  WeatherInfo,
+  WeatherSvgWrapper,
+} from 'components/UserWeatherItem/UserWeatherItem.styled';
+import { FaTemperatureArrowDown, FaTemperatureArrowUp } from 'react-icons/fa6';
+import { RiWindyLine } from 'react-icons/ri';
+import { WiHumidity } from 'react-icons/wi';
 
-export function CarModal({ closeModal }) {
+export function Modal({ closeModal }) {
   const userData = useSelector(selectModalData);
-  const isLoading = useSelector(selectIsLoading);
 
   useEffect(() => {
     window.addEventListener('keydown', hendleKeyDown);
@@ -53,94 +53,65 @@ export function CarModal({ closeModal }) {
 
   return (
     <Overlay onClick={closeOnBackdrop}>
-      <CarModalContent>
+      <ModalContent>
         <ExitBtn onClick={closeModal}>
           <RxCross2 className="cross" />
         </ExitBtn>
         {userData !== null && (
           <>
-            <div>{weatherIconSelector(userData.current.weather_code)}</div>
-            <p>
-              {userData.location.city},{userData.location.country}
-            </p>
-            <p>{userData.current.temperature_2m}</p>
+            <WeatherInfo>
+              <UserLocation>
+                {userData.location.city},{userData.location.country}
+              </UserLocation>
+
+              <WeatherSvgWrapper>
+                {weatherIconSelector(userData.current.weather_code)}
+              </WeatherSvgWrapper>
+
+              <CurrentTemperature>
+                {userData.current.temperature_2m} {'\u2103'}
+              </CurrentTemperature>
+
+              <TemperatureWrapper>
+                <TempRate>
+                  <FaTemperatureArrowDown className="temp-icon" />{' '}
+                  {Math.min(...userData.hourly.temperature_2m)} {'\u2103'}
+                </TempRate>
+                <TempRate>
+                  <FaTemperatureArrowUp className="temp-icon" />{' '}
+                  {Math.max(...userData.hourly.temperature_2m)} {'\u2103'}
+                </TempRate>
+              </TemperatureWrapper>
+            </WeatherInfo>
+
             <HourlyWeatherList
               temperatures={userData.hourly.temperature_2m}
               time={userData.hourly.time}
             />
-            <div>
-              <p>{userData.current.relative_humidity_2m}</p>
-              <p>{userData.current.wind_speed_10m}</p>
-            </div>
-          </>
-        )}
-        {/* {carData !== null && (
-          <>
-            <ModalImgWrapper>
-              <ModalImg src={carData.img} alt="" />
-            </ModalImgWrapper>
+            <CoditionsWrapper>
+              <Codition>
+                <WiHumidity className="cond-icon" />
+                <CoditionData>
+                  <CoditionValue>
+                    {userData.current.relative_humidity_2m} {'\u0025'}
+                  </CoditionValue>
+                  <CoditionTitle>Humidity</CoditionTitle>
+                </CoditionData>
+              </Codition>
 
-            <ModalTitle>
-              {carData.make} <Acsent>{carData.model}</Acsent>, {carData.year}
-            </ModalTitle>
-            <ModalShortDescription>
-              {`${carData.address.split(',')[1]} | ${
-                carData.address.split(',')[2]
-              } | Year: ${carData.year} | Type: ${
-                carData.type
-              } | Fuel Consumption: ${carData.fuelConsumption} | Engine Size: ${
-                carData.engineSize
-              }`}
-            </ModalShortDescription>
-            <ModalDescription>{carData.description}</ModalDescription>
-            <AccessoriesAndFuncWrapper>
-              <AccessoriesAndFunc>
-                Accessories and functionalities:
-              </AccessoriesAndFunc>
-              <ModalAccessories>
-                {carData.accessories.map(accsessori => {
-                  return ` ${accsessori} |`;
-                })}
-              </ModalAccessories>
-              <ModalAccessories>
-                {carData.functionalities.map(func => {
-                  return ` ${func} |`;
-                })}
-              </ModalAccessories>
-            </AccessoriesAndFuncWrapper>
-            <AccessoriesAndFunc>Rental Conditions: </AccessoriesAndFunc>
-            <Condition>
-              {carData.rentalConditions.split(',')[0].split(':')[0]}:{' '}
-              <Acsent>
-                {carData.rentalConditions.split(',')[0].split(':')[1]}
-              </Acsent>
-            </Condition>
-            <Condition>{carData.rentalConditions.split(',')[1]}</Condition>
-            <Condition>{carData.rentalConditions.split(',')[2]}</Condition>
-            <Condition>
-              Mileage:{' '}
-              <Acsent className="condition-acs">
-                {carData.mileage.toLocaleString('en-US')}
-              </Acsent>
-            </Condition>
-            <Condition>
-              Price:{' '}
-              <Acsent className="condition-acs">{carData.rentalPrice}</Acsent>
-            </Condition>
-            <RentBtn href="tel:+380730000000">Rental car</RentBtn>
+              <Codition>
+                <RiWindyLine className="cond-icon" />
+                <CoditionData>
+                  <CoditionValue>
+                    {userData.current.wind_speed_10m} km/h
+                  </CoditionValue>
+                  <CoditionTitle>Wind Speed</CoditionTitle>
+                </CoditionData>
+              </Codition>
+            </CoditionsWrapper>
           </>
-        )} */}
-        {isLoading && (
-          <div className="modal-loader">
-            <Blocks
-              visible={true}
-              height="100"
-              width="100"
-              ariaLabel="blocks-loading"
-            />
-          </div>
         )}
-      </CarModalContent>
+      </ModalContent>
     </Overlay>
   );
 }

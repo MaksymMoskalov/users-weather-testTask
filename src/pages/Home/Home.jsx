@@ -12,7 +12,7 @@ import {
 } from '../../redux/usersWeather.selectors';
 import { Modal } from 'components/Modal/Modal';
 import { Loader } from 'components/Loader/Loader';
-import { CatalogSection, LoadMore } from './Home.styled';
+import { HomeSection, LoadMore } from './Home.styled';
 
 const Home = () => {
   const disputch = useDispatch();
@@ -35,13 +35,13 @@ const Home = () => {
 
   return (
     <>
-      <CatalogSection>
+      <HomeSection>
         <UserWeatherList openModal={toglModal} users={users} />
         <LoadMore type="button" onClick={onLoadMore}>
           Load more
         </LoadMore>
         {isLoading && <Loader />}
-      </CatalogSection>
+      </HomeSection>
       {openModal && <Modal closeModal={toglModal} />}
     </>
   );

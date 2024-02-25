@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const CatalogSection = styled.section`
+export const HomeSection = styled.section`
   padding-bottom: 100px;
 `;
 

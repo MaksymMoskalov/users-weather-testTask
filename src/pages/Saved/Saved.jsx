@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { Modal } from 'components/Modal/Modal';
 import { Loader } from 'components/Loader/Loader';
+import { SavedSection } from './Saved.styled';
 
 const Saved = () => {
   const favouriteUsers = useSelector(selectFavouriteUsers);
@@ -21,13 +22,16 @@ const Saved = () => {
 
   return (
     <>
-      <section>
+      <SavedSection>
         <UserWeatherList
           openModal={toglModal}
           users={favouriteUsers}
           favouritePage={favouritePage}
         />
-      </section>
+        {favouriteUsers === null && (
+          <p className="no-user">There are no saved users</p>
+        )}
+      </SavedSection>
       {openModal && <Modal closeModal={toglModal} />}
       {isLoading && <Loader />}
     </>

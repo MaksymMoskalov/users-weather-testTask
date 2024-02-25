@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/users-weather-testTask/static/css/main.15ff5e99.css",
-    "main.js": "/users-weather-testTask/static/js/main.f3a54ad7.js",
-    "static/css/533.b65a006e.chunk.css": "/users-weather-testTask/static/css/533.b65a006e.chunk.css",
+    "main.js": "/users-weather-testTask/static/js/main.c4f49637.js",
+    "static/css/533.55d5ccdb.chunk.css": "/users-weather-testTask/static/css/533.55d5ccdb.chunk.css",
     "static/js/533.1e8b3ee2.chunk.js": "/users-weather-testTask/static/js/533.1e8b3ee2.chunk.js",
-    "static/css/130.b65a006e.chunk.css": "/users-weather-testTask/static/css/130.b65a006e.chunk.css",
-    "static/js/130.5c50860d.chunk.js": "/users-weather-testTask/static/js/130.5c50860d.chunk.js",
+    "static/css/627.55d5ccdb.chunk.css": "/users-weather-testTask/static/css/627.55d5ccdb.chunk.css",
+    "static/js/627.52d0d6c9.chunk.js": "/users-weather-testTask/static/js/627.52d0d6c9.chunk.js",
     "static/js/66.09a4caa1.chunk.js": "/users-weather-testTask/static/js/66.09a4caa1.chunk.js",
     "static/js/181.614bdb39.chunk.js": "/users-weather-testTask/static/js/181.614bdb39.chunk.js",
     "static/media/Snow-ice.svg": "/users-weather-testTask/static/media/Snow-ice.43d1636a43fc9583bfb994faa309a2ac.svg",
@@ -18,16 +18,16 @@
     "index.html": "/users-weather-testTask/index.html",
     "static/media/Fog.svg": "/users-weather-testTask/static/media/Fog.70251c2e695e47e2fe413d76808afb30.svg",
     "main.15ff5e99.css.map": "/users-weather-testTask/static/css/main.15ff5e99.css.map",
-    "main.f3a54ad7.js.map": "/users-weather-testTask/static/js/main.f3a54ad7.js.map",
-    "533.b65a006e.chunk.css.map": "/users-weather-testTask/static/css/533.b65a006e.chunk.css.map",
+    "main.c4f49637.js.map": "/users-weather-testTask/static/js/main.c4f49637.js.map",
+    "533.55d5ccdb.chunk.css.map": "/users-weather-testTask/static/css/533.55d5ccdb.chunk.css.map",
     "533.1e8b3ee2.chunk.js.map": "/users-weather-testTask/static/js/533.1e8b3ee2.chunk.js.map",
-    "130.b65a006e.chunk.css.map": "/users-weather-testTask/static/css/130.b65a006e.chunk.css.map",
-    "130.5c50860d.chunk.js.map": "/users-weather-testTask/static/js/130.5c50860d.chunk.js.map",
+    "627.55d5ccdb.chunk.css.map": "/users-weather-testTask/static/css/627.55d5ccdb.chunk.css.map",
+    "627.52d0d6c9.chunk.js.map": "/users-weather-testTask/static/js/627.52d0d6c9.chunk.js.map",
     "66.09a4caa1.chunk.js.map": "/users-weather-testTask/static/js/66.09a4caa1.chunk.js.map",
     "181.614bdb39.chunk.js.map": "/users-weather-testTask/static/js/181.614bdb39.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.15ff5e99.css",
-    "static/js/main.f3a54ad7.js"
+    "static/js/main.c4f49637.js"
   ]
 }

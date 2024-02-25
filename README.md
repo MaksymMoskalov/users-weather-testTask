@@ -1,4 +1,4 @@
-## Weather App
+## UWeather App
 
 ### Опис проекту
 
